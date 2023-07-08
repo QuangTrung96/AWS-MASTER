@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 3: Các lệnh cơ bản trên AWS EC2 Linux cd, ls, mkdir, cp, rm, history, pwd</h1>
+        </div>
+        <ul>
+            <li>cd /usr/local/src || cd /usr/local/src/</li>
+            <li>cd /</li>
+            <li>&nbsp;</li>
+            <li>mkdir -p HANOI HCM/Q1 HCM/Q2 HANAM/BINHLUC</li>
+            <li>&nbsp;</li>
+            <li>cp HANAM/index1.txt HANOI || cp HANAM/index1.txt HANOI/</li>
+            <li>cp -rf HCM/* HANAM || cp -rf HCM/* HANAM/</li>
+            <li>&nbsp;</li>
+            <li>mv HANAM THUMUCCHUADUOCTAO</li>
+            <li>mv HANAM/ THUMUCCHUADUOCTAO</li>
+            <li>&nbsp;</li>
+            <li>rm index.txt(y/n || yes/no) || rm -f index1.txt || rm -rf index2.txt</li>
+            <li>rm HaNoi(error) || rm -r HaNoi || rm -rf HaNoi</li>
+            <li>rm HaNoi/(error) || rm -r HaNoi/ || rm -rf HaNoi/</li>
+            <li>&nbsp;</li>
+            <li>history | grep cd</li>
+            <li>history | grep cp</li>
+            <li>history | less</li>
+            <li>&nbsp;</li>
+            <li>sudo su -</li>
+            <li>&nbsp;</li>
+            <li>pwd = /usr/local/src: mkdir -p a/b/c != mkdir /a/b/c</li>
+            <li>&nbsp;</li>
+            <li>rm -rf A || rm -rf A/ != rm -rf A/B</li>
+            <li>rm -rf A || rm -rf A/ != rm -rf A/B/</li>
+            <li>rm -rf A || rm -rf A/ != rm -rf A/*</li>
+        </ul>
+    </div>
+</body>
+</html>
