@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 4: Tạo user/group và phân quyền file và folder trên AWS EC2 Linux</h1>
+
+        </div>
+        <div class="text-left">
+            <p>Bài này cũng rất là quan trọng, bởi vì bạn phải nắm được cách phân quền File và Folder</p>
+            <p>Ví dụ như sau này bạn tạo một Web Server, nếu như bạn không biết phân quyền File và Folder thì bạn sẽ rất dễ có thể bị hacker tấn công</p>
+            <p>Hoặc là những thư mục dữ liệu của mình bạn không biết phân quyền thì cũng sẽ bị kẻ xấu đột nhập vào các thư mục đó và ăn cắp dữ liệu của bạn</p>
+            <p>Okie để bắt đầu, thì đầu tiên chúng ta sẽ truy cập vào Server, thì chúng ta sẽ đi từng bước 1</p>
+            <p>Bước đầu tiền chúng ta sẽ vào Server</p>
+        </div>
+        <div class="text-left">
+            trinh@HaoQuang96 MINGW64 ~/Downloads
+            $ ssh -i "Test Server 4.pem" ec2-user@13.212.102.176
+               ,     #_
+               ~\_  ####_        Amazon Linux 2023
+              ~~  \_#####\
+              ~~     \###|
+              ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+               ~~       V~' '->
+                ~~~         /
+                  ~~._.   _/
+                     _/ _/
+                   _/m/'
+            Last login: Sat Jul 15 03:33:47 2023 from 14.232.64.207
+            [ec2-user@ip-172-31-3-96 ~]$
+            [ec2-user@ip-172-31-3-96 ~]$ pwd
+            /home/ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ ll -a /home/
+            total 0
+            drwxr-xr-x.  3 root     root      22 Jul 15 03:30 .
+            dr-xr-xr-x. 18 root     root     237 Jul  5 17:44 ..
+            drwx------.  3 ec2-user ec2-user  95 Jul 15 03:34 ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ pwd
+            /home/ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ ll -a /home/
+            total 0
+            drwxr-xr-x.  3 root     root      22 Jul 15 03:30 .
+            dr-xr-xr-x. 18 root     root     237 Jul  5 17:44 ..
+            drwx------.  3 ec2-user ec2-user  95 Jul 15 03:34 ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ cd /home/ec2-user/
+            [ec2-user@ip-172-31-3-96 ~]$ cd /root/
+            -bash: cd: /root/: Permission denied
+            [ec2-user@ip-172-31-3-96 ~]$ pwd
+            /home/ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ ll -a /home/
+            total 0
+            drwxr-xr-x.  3 root     root      22 Jul 15 03:30 .
+            dr-xr-xr-x. 18 root     root     237 Jul  5 17:44 ..
+            drwx------.  3 ec2-user ec2-user  95 Jul 15 03:34 ec2-user
+            [ec2-user@ip-172-31-3-96 ~]$ cd /home/ec2-user/
+            [ec2-user@ip-172-31-3-96 ~]$ cd /root/
+            -bash: cd: /root/: Permission denied
+            [ec2-user@ip-172-31-3-96 ~]$ useradd soc
+            useradd: Permission denied.
+            useradd: cannot lock /etc/passwd; try again later.
+            [ec2-user@ip-172-31-3-96 ~]$ sudo su -
+            [root@ip-172-31-3-96 ~]# pwd
+            /root
+            [root@ip-172-31-3-96 ~]# cd /home/ec2-user/
+            [root@ip-172-31-3-96 ec2-user]# cd /home/soc/
+            -bash: cd: /home/soc/: No such file or directory
+            [root@ip-172-31-3-96 ec2-user]# cd /root/
+            [root@ip-172-31-3-96 ~]# pwd
+            /root
+            [root@ip-172-31-3-96 ~]# useradd soc
+            [root@ip-172-31-3-96 ~]# ll -a /home/
+            total 0
+            drwxr-xr-x.  4 root     root      33 Jul 15 03:40 .
+            dr-xr-xr-x. 18 root     root     237 Jul  5 17:44 ..
+            drwx------.  3 ec2-user ec2-user  95 Jul 15 03:34 ec2-user
+            drwx------.  2 soc      soc       62 Jul 15 03:40 soc
+            [root@ip-172-31-3-96 ~]#            
+        </div>
+    </div>
+</body>
+</html>
