@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
         <div class="text-center text-danger">
             <h1>AWS Cloud Tiếng Việt</h1>
             <h1>Bài 4: Tạo user/group và phân quyền file và folder trên AWS EC2 Linux</h1>
 
         </div>
-        <div class="text-left">
+        <div class="text-left mt-5">
             <p>Bài này cũng rất là quan trọng, bởi vì bạn phải nắm được cách phân quền File và Folder</p>
             <p>Ví dụ như sau này bạn tạo một Web Server, nếu như bạn không biết phân quyền File và Folder thì bạn sẽ rất dễ có thể bị hacker tấn công</p>
             <p>Hoặc là những thư mục dữ liệu của mình bạn không biết phân quyền thì cũng sẽ bị kẻ xấu đột nhập vào các thư mục đó và ăn cắp dữ liệu của bạn</p>
             <p>Okie để bắt đầu, thì đầu tiên chúng ta sẽ truy cập vào Server, thì chúng ta sẽ đi từng bước 1</p>
             <p>Bước đầu tiền chúng ta sẽ vào Server</p>
         </div>
-        <div class="text-left">
+        <div class="mt-5">
             <ul>
                 <li>pwd</li>
                 <li>ll -a /home/</li>
@@ -50,6 +50,7 @@
                     [mit@ip-172-31-3-96 ~]$<br />
                 </li>
             </ul>
+            <hr />
             <p>
                 /root === /home/ec2-user === /home/trung === /home/truong
             </p>
@@ -74,6 +75,32 @@
             </p>
             <p>
                 <img src="./images/network_security_5.png" alt="">
+            </p>
+            <hr />
+            <p>
+                chmod 400 tho.pem
+            </p>
+            <p>
+                chmod 700 .ssh (rwx------)
+            </p>
+            <p>
+                chmod 755 folder name (rwxr-xr-x)
+            </p>
+            <p>
+                <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html" target="_blank">Manage users on your Linux instance</a>
+                <a href="https://www.lightnetics.com/topic/421/how-to-change-the-default-aws-instance-user" target="_blank">How to change the default aws instance user?</a>
+                <ul>
+                    <li>ssh-keygen -y -f /path_to_key_pair/key-pair-name.pem</li>
+                    <li>sudo adduser newuser</li>
+                    <li>sudo su - newuser</li>
+                    <li>mkdir .ssh</li>
+                    <li>chmod 700 .ssh</li>
+                    <li>touch .ssh/authorized_keys</li>
+                    <li>chmod 600 .ssh/authorized_keys</li>
+                    <li>nano .ssh/authorized_keys</li>
+                    <li>sudo vi /etc/sudoers.d/90-cloud-init-users</li>
+                    <li>sudo userdel -r ec2-user</li>
+                </ul>
             </p>
         </div>
     </div>
