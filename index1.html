@@ -4,52 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-    <h1>AWS Cloud Tiếng Việt</h1>
-    <h1>Bài 1: Cài đặt máy chủ EC2/Linux</h1>
-    <p>Chào mừng các bạn đã đến với kênh tin học thật là đơn giản của mình, hôm nay mình sẽ chia sẻ cho các bạn kiến thức về cách cài đặt một máy chủ trên môi trường
-       Amazon Cloud, thì trong khuân khổ bài này mình sẽ hướng dẫn các bạn cách cài đặt với hệ điều hành Linux, còn với hệ điều hành Window thì mình sẽ hướng dẫn các bạn ở
-       một video khác
-    </p>
-    <div>
-        <h1>How to setup characters on a line in Visual Studio Code</h1>
-        <h1>Visual Studio Code on Window: Ctrl + , || Nhấn vào biểu tượng bánh răng trên editor rùi chọn setting</h1>
-        <h1>Số ký tự tối đa trên một dòng code, thường không nên vượt quá 160 ký tự, dao động từ 80 -> 160 ký tự</h1>
-        <h1>Thì ở trong đây nó sẽ có rất nhiều hệ điều hành, ví dụ như Linux || Window, Centos || Ubuntu</h1>
-        <h1>Thì trong bài này mình sẽ sử dụng HĐH (OS) của Amazon đó là Amazon Linux</h1>
-        <h1>A File Json Structure</h1>
-        <p>
-            {
-                "window.zoomLevel": -2
-            }
-        </p>
-        <p>
-            {
-                "window.zoomLevel": -2,
-                "editor.rulers": [160]
-            }
-        </p>
-        <ul>
-            <li>Free tier only: Chỉ cấp miến phí: <a href="https://aws.amazon.com/free/">https://aws.amazon.com/free/</a></li>
-            <li>Amazon Linux</li>
-            <li>Free tier eligible</li>
-            <li>Verified provider</li>
-            <li>Amazon Linux 2023 AMI</li>
-            <li>ami-0c91f4476780c2eaf (64-bit (x86), ưu tiên uefi) / ami-0f39236da92996137 (64-bit (Arm), uefi)
-                Amazon Linux 2023 là một HĐH dựa trên Linux hiện đại, có mục đích chung đi kèm với 5 năm hỗ trợ dài hạn. Nó được tối ưu hóa cho AWS và được thiết 
-                kế để cung cấp một môi trường thực thi an toàn, ổn định và hiệu suất cao để phát triển và chạy các ứng dụng đám mây của bạn.</li>
-            <li>Platform: amazon
-                Root device type: ebs
-                Virtualization: hvm
-                ENA enabled: Yes</li>
-            <li>
-                Free tier: In your first year includes 750 hours of t2.micro (or t3.micro in the Regions in which t2.micro is unavailable) instance usage on free tier AMIs per month, 30 GiB of EBS storage, 2 million IOs, 1 GB of snapshots, and 100 GB of bandwidth to the internet.
-            </li>
-        </ul>
-        <div>
-            <p><a href="index.html">Go To Menu Lesson</a></p>
+    <div class="container-fluid mt-3">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 1: Cài đặt máy chủ EC2/Linux</h1>
         </div>
-     </div>
+        <p>Chào mừng các bạn đã đến với kênh tin học thật là đơn giản của mình, hôm nay mình sẽ chia sẻ cho các bạn kiến thức về cách cài đặt một máy chủ trên môi trường
+           Amazon Cloud, thì trong khuân khổ bài này mình sẽ hướng dẫn các bạn cách cài đặt với hệ điều hành Linux, còn với hệ điều hành Window thì mình sẽ hướng dẫn các bạn ở
+           một video khác
+        </p>
+        <div>
+            <h1>How to setup characters on a line in Visual Studio Code</h1>
+            <h1>Visual Studio Code on Window: Ctrl + , || Nhấn vào biểu tượng bánh răng trên editor rùi chọn setting</h1>
+            <h1>Số ký tự tối đa trên một dòng code, thường không nên vượt quá 160 ký tự, dao động từ 80 -> 160 ký tự</h1>
+            <h1>Thì ở trong đây nó sẽ có rất nhiều hệ điều hành, ví dụ như Linux || Window, Centos || Ubuntu</h1>
+            <h1>Thì trong bài này mình sẽ sử dụng HĐH (OS) của Amazon đó là Amazon Linux</h1>
+            <h1>A File Json Structure</h1>
+            <p>
+                {
+                    "window.zoomLevel": -2
+                }
+            </p>
+            <p>
+                {
+                    "window.zoomLevel": -2,
+                    "editor.rulers": [160]
+                }
+            </p>
+            <ul>
+                <li>Free tier only: Chỉ cấp miến phí: <a href="https://aws.amazon.com/free/">https://aws.amazon.com/free/</a></li>
+                <li>Amazon Linux</li>
+                <li>Free tier eligible</li>
+                <li>Verified provider</li>
+                <li>Amazon Linux 2023 AMI</li>
+                <li>ami-0c91f4476780c2eaf (64-bit (x86), ưu tiên uefi) / ami-0f39236da92996137 (64-bit (Arm), uefi)
+                    Amazon Linux 2023 là một HĐH dựa trên Linux hiện đại, có mục đích chung đi kèm với 5 năm hỗ trợ dài hạn. Nó được tối ưu hóa cho AWS và được thiết 
+                    kế để cung cấp một môi trường thực thi an toàn, ổn định và hiệu suất cao để phát triển và chạy các ứng dụng đám mây của bạn.</li>
+                <li>Platform: amazon
+                    Root device type: ebs
+                    Virtualization: hvm
+                    ENA enabled: Yes</li>
+                <li>
+                    Free tier: In your first year includes 750 hours of t2.micro (or t3.micro in the Regions in which t2.micro is unavailable) instance usage on free tier AMIs per month, 30 GiB of EBS storage, 2 million IOs, 1 GB of snapshots, and 100 GB of bandwidth to the internet.
+                </li>
+            </ul>
+            <div>
+                <p><a href="index.html">Go To Menu Lesson</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

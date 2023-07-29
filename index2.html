@@ -4,155 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
 </head>
 <body>
-    <h1>AWS Cloud Tiếng Việt</h1>
-    <h1>Bài 2: Cách sử dụng vi editor trên AWS EC2 Linux</h1>
-    <h1>Hôm nay mình sẽ hướng dẫn các bạn sử dụng vi editor ở trên Cloud AWS</h1>
-    <h1>Soạn các File ở trên Linux mà dùng lệnh thì các bạn sẽ rất là khó để có thể cấu hình được ở trên Server Linux</h1>
-    <h1>Sử dụng vi editor là để config các file trên Server một cách dễ dàng và thuận tiện</h1>
-    <p>
-        [ec2-user@ip-172-31-32-163 ~]$ pwd
-        /home/ec2-user
-        [ec2-user@ip-172-31-32-163 ~]$ ls -al
-        total 44
-        drwx------. 7 ec2-user ec2-user 16384 Jul  6 15:16 .
-        drwxr-xr-x. 3 root     root        22 Jul  4 16:39 ..
-        -rw-------. 1 ec2-user ec2-user   370 Jul  4 17:19 .bash_history
-        -rw-r--r--. 1 ec2-user ec2-user    18 Jan 28 22:29 .bash_logout
-        -rw-r--r--. 1 ec2-user ec2-user   141 Jan 28 22:29 .bash_profile
-        -rw-r--r--. 1 ec2-user ec2-user   492 Jan 28 22:29 .bashrc
-        drwx------. 2 ec2-user ec2-user    29 Jul  4 16:39 .ssh
-        -rw-------. 1 ec2-user ec2-user   969 Jul  6 15:16 .viminfo
-        drwxr-xr-x. 3 ec2-user ec2-user    16 Jul  6 15:15 HCM
-        drwxr-xr-x. 3 ec2-user ec2-user    21 Jul  6 15:15 HaNam
-        drwxr-xr-x. 3 ec2-user ec2-user    20 Jul  6 15:15 HaNoi
-        drwxr-xr-x. 2 ec2-user ec2-user     6 Jul  6 15:13 Hello1
-        -rw-r--r--. 1 ec2-user ec2-user     0 Jul  6 15:15 trung1.txt
-        -rw-r--r--. 1 ec2-user ec2-user     5 Jul  6 15:16 trung2.txt
-        -rw-r--r--. 1 ec2-user ec2-user     6 Jul  6 15:16 trung3.txt
-        [ec2-user@ip-172-31-32-163 ~]$ rm -rf HcM
-        [ec2-user@ip-172-31-32-163 ~]$ ll -al
-        total 44
-        drwx------. 7 ec2-user ec2-user 16384 Jul  6 15:16 .
-        drwxr-xr-x. 3 root     root        22 Jul  4 16:39 ..
-        -rw-------. 1 ec2-user ec2-user   370 Jul  4 17:19 .bash_history
-        -rw-r--r--. 1 ec2-user ec2-user    18 Jan 28 22:29 .bash_logout
-        -rw-r--r--. 1 ec2-user ec2-user   141 Jan 28 22:29 .bash_profile
-        -rw-r--r--. 1 ec2-user ec2-user   492 Jan 28 22:29 .bashrc
-        drwx------. 2 ec2-user ec2-user    29 Jul  4 16:39 .ssh
-        -rw-------. 1 ec2-user ec2-user   969 Jul  6 15:16 .viminfo
-        drwxr-xr-x. 3 ec2-user ec2-user    16 Jul  6 15:15 HCM
-        drwxr-xr-x. 3 ec2-user ec2-user    21 Jul  6 15:15 HaNam
-        drwxr-xr-x. 3 ec2-user ec2-user    20 Jul  6 15:15 HaNoi
-        drwxr-xr-x. 2 ec2-user ec2-user     6 Jul  6 15:13 Hello1
-        -rw-r--r--. 1 ec2-user ec2-user     0 Jul  6 15:15 trung1.txt
-        -rw-r--r--. 1 ec2-user ec2-user     5 Jul  6 15:16 trung2.txt
-        -rw-r--r--. 1 ec2-user ec2-user     6 Jul  6 15:16 trung3.txt
-        [ec2-user@ip-172-31-32-163 ~]$
-    </p>
-    <p>
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ pwd
-        /c/Users/trinh/OneDrive/Máy tính
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ ll -al
-        total 41
-        drwxr-xr-x 1 trinh 197609    0 Jul  2 23:06  ./
-        drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
-        -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
-        -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
-        -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
-        -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
-        -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
-        -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ mkdir HaNam
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ ll -al
-        total 41
-        drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  ./
-        drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
-        -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
-        drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  HaNam/
-        -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
-        -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
-        -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
-        -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
-        -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ rm -rf hanAm
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $ ll -al
-        total 41
-        drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  ./
-        drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
-        -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
-        -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
-        -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
-        -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
-        -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
-        -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
-        -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
-        
-        trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
-        $
-    </p>
-    <p>
-        Trên Linux/Unix/Mac (OS) phân biệt chữ hoa và chữ thường
-        Trên Window thì không phân biệt chữ hoa, chữ thường
-        => Trên HĐH (OS) Linux/Unix/Mac thì chặt chẽ hơn
-        => Trên HĐH (OS) Window thì dễ dãi hơi
-    </p>
-    <p>
-        ls <br />
-        ls -l === ll <br />
-        ls -a <br />
-        ls -la === ls -l -a === ll -a <br />
-        ls -al === ls -a -l === ll -a <br />
-        ll <br />
-        ll -a <br />
-        ll -l <br />
-        ll -al === ll -a -l === ll -a <br />
-        ll -la === ll -l -a === ll -a <br />
-        => ll -a
-    </p>
-    <p>mkdir NB</p>
-    <p>mkdir NB1 NB2 NB3</p>
-    <p>mkdir -p HD HN/BL HCM/Q1</p>
-    <p>
-        touch index1.txt <br />
-        touch index1.txt touch2.txt touch3.txt <br />
-        vi index1.txt <br />
-        echo "" "ABC" > >> index1.txt
-        cat index1.txt
-        less index1.txt => q => quit
-    </p>
-    <p>
-        rm -r HN || rm -r HN/ || rm -r H* || rm -r H*/ <br />
-        rm -r HN BN || rm -r HN/ BN/ || rm -r H* B* || rm -r H*/ B*/ <br />
-        rm -rf HN || rm -rf HN/ || rm -rf H* || rm -rf H*/ <br />
-        rm -rf HN BN || rm -rf HN/ BN/ || rm -rf H* B* || rm -rf H*/ B*/ <br />
-    </p>
-    <p>rm file || rm -r file || rm -f file || rm -rf file</p>
-    <p>rm a.txt || rm a*.txt || rm a*</p>
-    <p>rm -r a.txt || rm -r a*.txt || rm -r a*</p>
-    <p>rm -f a.txt || rm -f a*.txt || rm -f a*</p>
-    <p>rm -rf a.txt || rm -rf a*.txt || rm -rf a*</p>
-    <p>rm -r a.txt b*.txt c* A B/ C* D*/ E/H E/H* E/H*/ D*/U D*/U* D*/U*/ </p>
-    <p>rm -rf a.txt b*.txt c* A B/ C* D*/ E/H E/H* E/H*/ D*/U D*/U* D*/U*/ </p>
-    <div>
-        <p><a href="index.html">Go To Menu Lesson</a></p>
+    <div class="container-fluid mt-3">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 2: Cách sử dụng vi editor trên AWS EC2 Linux</h1>
+        </div>
+        <h1>Hôm nay mình sẽ hướng dẫn các bạn sử dụng vi editor ở trên Cloud AWS</h1>
+        <h1>Soạn các File ở trên Linux mà dùng lệnh thì các bạn sẽ rất là khó để có thể cấu hình được ở trên Server Linux</h1>
+        <h1>Sử dụng vi editor là để config các file trên Server một cách dễ dàng và thuận tiện</h1>
+        <p>
+            [ec2-user@ip-172-31-32-163 ~]$ pwd
+            /home/ec2-user
+            [ec2-user@ip-172-31-32-163 ~]$ ls -al
+            total 44
+            drwx------. 7 ec2-user ec2-user 16384 Jul  6 15:16 .
+            drwxr-xr-x. 3 root     root        22 Jul  4 16:39 ..
+            -rw-------. 1 ec2-user ec2-user   370 Jul  4 17:19 .bash_history
+            -rw-r--r--. 1 ec2-user ec2-user    18 Jan 28 22:29 .bash_logout
+            -rw-r--r--. 1 ec2-user ec2-user   141 Jan 28 22:29 .bash_profile
+            -rw-r--r--. 1 ec2-user ec2-user   492 Jan 28 22:29 .bashrc
+            drwx------. 2 ec2-user ec2-user    29 Jul  4 16:39 .ssh
+            -rw-------. 1 ec2-user ec2-user   969 Jul  6 15:16 .viminfo
+            drwxr-xr-x. 3 ec2-user ec2-user    16 Jul  6 15:15 HCM
+            drwxr-xr-x. 3 ec2-user ec2-user    21 Jul  6 15:15 HaNam
+            drwxr-xr-x. 3 ec2-user ec2-user    20 Jul  6 15:15 HaNoi
+            drwxr-xr-x. 2 ec2-user ec2-user     6 Jul  6 15:13 Hello1
+            -rw-r--r--. 1 ec2-user ec2-user     0 Jul  6 15:15 trung1.txt
+            -rw-r--r--. 1 ec2-user ec2-user     5 Jul  6 15:16 trung2.txt
+            -rw-r--r--. 1 ec2-user ec2-user     6 Jul  6 15:16 trung3.txt
+            [ec2-user@ip-172-31-32-163 ~]$ rm -rf HcM
+            [ec2-user@ip-172-31-32-163 ~]$ ll -al
+            total 44
+            drwx------. 7 ec2-user ec2-user 16384 Jul  6 15:16 .
+            drwxr-xr-x. 3 root     root        22 Jul  4 16:39 ..
+            -rw-------. 1 ec2-user ec2-user   370 Jul  4 17:19 .bash_history
+            -rw-r--r--. 1 ec2-user ec2-user    18 Jan 28 22:29 .bash_logout
+            -rw-r--r--. 1 ec2-user ec2-user   141 Jan 28 22:29 .bash_profile
+            -rw-r--r--. 1 ec2-user ec2-user   492 Jan 28 22:29 .bashrc
+            drwx------. 2 ec2-user ec2-user    29 Jul  4 16:39 .ssh
+            -rw-------. 1 ec2-user ec2-user   969 Jul  6 15:16 .viminfo
+            drwxr-xr-x. 3 ec2-user ec2-user    16 Jul  6 15:15 HCM
+            drwxr-xr-x. 3 ec2-user ec2-user    21 Jul  6 15:15 HaNam
+            drwxr-xr-x. 3 ec2-user ec2-user    20 Jul  6 15:15 HaNoi
+            drwxr-xr-x. 2 ec2-user ec2-user     6 Jul  6 15:13 Hello1
+            -rw-r--r--. 1 ec2-user ec2-user     0 Jul  6 15:15 trung1.txt
+            -rw-r--r--. 1 ec2-user ec2-user     5 Jul  6 15:16 trung2.txt
+            -rw-r--r--. 1 ec2-user ec2-user     6 Jul  6 15:16 trung3.txt
+            [ec2-user@ip-172-31-32-163 ~]$
+        </p>
+        <p>
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ pwd
+            /c/Users/trinh/OneDrive/Máy tính
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ ll -al
+            total 41
+            drwxr-xr-x 1 trinh 197609    0 Jul  2 23:06  ./
+            drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
+            -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
+            -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
+            -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
+            -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
+            -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
+            -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ mkdir HaNam
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ ll -al
+            total 41
+            drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  ./
+            drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
+            -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
+            drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  HaNam/
+            -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
+            -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
+            -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
+            -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
+            -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ rm -rf hanAm
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $ ll -al
+            total 41
+            drwxr-xr-x 1 trinh 197609    0 Jul  6 22:20  ./
+            drwxr-xr-x 1 trinh 197609    0 Apr  8 22:21  ../
+            -rwxr-xr-x 1 trinh 197609 1275 Apr  1 14:40  CrystalDiskInfo.lnk*
+            -rwxr-xr-x 1 trinh 197609 1162 Apr  1 14:40 'Hard Disk Sentinel.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2396 Apr 22 17:37 'Hạ Long - Chrome.lnk'*
+            -rwxr-xr-x 1 trinh 197609 1038 Apr  9 18:07  Telegram.lnk*
+            -rwxr-xr-x 1 trinh 197609 1406 Apr  8 10:59 'Visual Studio Code.lnk'*
+            -rwxr-xr-x 1 trinh 197609 2229 Jul  2 23:06  Zalo.lnk*
+            -rw-r--r-- 1 trinh 197609  282 Apr  8 19:58  desktop.ini
+            -rw-r--r-- 1 trinh 197609 6500 Jul  2 22:59  images.jpg
+            
+            trinh@HaoQuang96 MINGW64 ~/OneDrive/Máy tính
+            $
+        </p>
+        <p>
+            Trên Linux/Unix/Mac (OS) phân biệt chữ hoa và chữ thường
+            Trên Window thì không phân biệt chữ hoa, chữ thường
+            => Trên HĐH (OS) Linux/Unix/Mac thì chặt chẽ hơn
+            => Trên HĐH (OS) Window thì dễ dãi hơi
+        </p>
+        <p>
+            ls <br />
+            ls -l === ll <br />
+            ls -a <br />
+            ls -la === ls -l -a === ll -a <br />
+            ls -al === ls -a -l === ll -a <br />
+            ll <br />
+            ll -a <br />
+            ll -l <br />
+            ll -al === ll -a -l === ll -a <br />
+            ll -la === ll -l -a === ll -a <br />
+            => ll -a
+        </p>
+        <p>mkdir NB</p>
+        <p>mkdir NB1 NB2 NB3</p>
+        <p>mkdir -p HD HN/BL HCM/Q1</p>
+        <p>
+            touch index1.txt <br />
+            touch index1.txt touch2.txt touch3.txt <br />
+            vi index1.txt <br />
+            echo "" "ABC" > >> index1.txt
+            cat index1.txt
+            less index1.txt => q => quit
+        </p>
+        <p>
+            rm -r HN || rm -r HN/ || rm -r H* || rm -r H*/ <br />
+            rm -r HN BN || rm -r HN/ BN/ || rm -r H* B* || rm -r H*/ B*/ <br />
+            rm -rf HN || rm -rf HN/ || rm -rf H* || rm -rf H*/ <br />
+            rm -rf HN BN || rm -rf HN/ BN/ || rm -rf H* B* || rm -rf H*/ B*/ <br />
+        </p>
+        <p>rm file || rm -r file || rm -f file || rm -rf file</p>
+        <p>rm a.txt || rm a*.txt || rm a*</p>
+        <p>rm -r a.txt || rm -r a*.txt || rm -r a*</p>
+        <p>rm -f a.txt || rm -f a*.txt || rm -f a*</p>
+        <p>rm -rf a.txt || rm -rf a*.txt || rm -rf a*</p>
+        <p>rm -r a.txt b*.txt c* A B/ C* D*/ E/H E/H* E/H*/ D*/U D*/U* D*/U*/ </p>
+        <p>rm -rf a.txt b*.txt c* A B/ C* D*/ E/H E/H* E/H*/ D*/U D*/U* D*/U*/ </p>
+        <div>
+            <p><a href="index.html">Go To Menu Lesson</a></p>
+        </div>
     </div>
 </body>
 </html>
