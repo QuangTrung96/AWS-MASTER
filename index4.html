@@ -57,7 +57,7 @@
                 $ ssh -i "hello.pem" soc@ec2-54-179-111-240.ap-southeast-1.compute.amazonaws.com<br />
                 soc@ec2-54-179-111-240.ap-southeast-1.compute.amazonaws.com: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
             </p>
-            <p class="text-danger">Custom IP</p>
+            <p class="text-danger"><strong>Custom IP</strong></p>
             <p>
                 ssh ec2-user@ec2-54-179-111-240.ap-southeast-1.compute.amazonaws.com
             </p>
@@ -86,7 +86,7 @@
             <p>
                 chmod 755 folder name (rwxr-xr-x)
             </p>
-            <p class="text-danger">Switch User, change ec2-user default</p>
+            <p class="text-danger"><strong>Switch User, change ec2-user default</strong></p>
             <p>
                 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html" target="_blank">Manage users on your Linux instance</a><br />
                 <a href="https://www.lightnetics.com/topic/421/how-to-change-the-default-aws-instance-user" target="_blank">How to change the default aws instance user?</a>
@@ -102,6 +102,69 @@
                     <li>sudo vi /etc/sudoers.d/90-cloud-init-users</li>
                     <li>sudo userdel -r ec2-user</li>
                 </ul>
+            </p>
+            <p>mkdir, mkdir -p, rm, rm -r, rm -R, rm -f, rm -rf, rm -Rf, mv, cp, cp -rf, cp -Rf</p>
+            <hr />
+            <p class="text-danger"><strong>Permission</strong></p>
+            <ul>
+                <li>Read: 4</li>
+                <li>Write: 2</li>
+                <li>Execute: 1</li>
+                <li>No permission: -</li>
+            </ul>
+            <p>
+                Tạo nhóm đi, ví dụ bây giờ trong công ty mình sẽ phân ra là nhóm kết toán, nhóm nhân sự và nhóm IT <br />
+                Mỗi một nhóm này sẽ lưu dữ liệu riêng của từng nhóm đó và user của các nhóm khác thì sẽ không được phép truy cập vào các nhóm chéo nhau
+                để có thể xem được dữ liệu của nhau <br />
+                groupadd ketoan <br  />
+                groupadd nhansu <br />
+            </p>
+            <p>
+                Phân quyền File và Folder ở trên Linux, trên Linux ý thì để kiểm tra quyền File và Folder hiện tại đang là gì thì chúng ta sẽ dùng lệnh ls -la || ll -a <br />
+                mkdir ketoan-data <br />
+                user/group/other (default public user) <br />
+                Set permission cho File và Folder <br />
+                chmod 400 tho.pem <br />
+                chmod -f 400 tho.pem <br />
+                chmod -R thu muc || chmod -Rf thu muc
+            </p>
+            <p>
+                pwd <br />
+                ll -a <br />
+                chown -Rf root:ketoan ketoan-data || chown -Rf :ketoan ketoan-data <br />
+                usermod -a -G ketoan trung (option group name có thể nhấn tab để nhận hit group name) <br />
+                usermod -a -G ketoan truong <br />
+                id trung
+            </p>
+            <p>
+                [root@ip-172-31-28-169 hanam]# groups trung <br />
+                trung : trung ketoan <br />
+                [root@ip-172-31-28-169 hanam]# groups truong <br />
+                truong : truong ketoan <br />
+                [root@ip-172-31-28-169 hanam]# groups ec2-user <br />
+                ec2-user : ec2-user adm wheel systemd-journal <br />
+                [root@ip-172-31-28-169 hanam]# groups root <br />
+                root : root <br />
+                [root@ip-172-31-28-169 hanam]# <br />
+            </p>
+            <p>
+                # usermod -aG postgres tecmint <br />
+                # groups tecmint <br />
+            </p>
+            <p>
+                <a href="https://www.tecmint.com/add-or-remove-user-from-group-in-linux/" target="_blank">How to Add or Remove Linux User From Group</a><br />
+            </p>
+            <p>
+                [root@ip-172-31-28-169 hanam]# gpasswd -d trung ketoan <br />
+                Removing user trung from group ketoan <br />
+                [root@ip-172-31-28-169 hanam]# groups trung <br />
+                trung : trung <br />
+                [root@ip-172-31-28-169 hanam]# <br />
+            </p>
+            <p>
+                $ man groups <br />
+                $ man usermod <br />
+                $ man gpasswd <br />
             </p>
         </div>
     </div>
