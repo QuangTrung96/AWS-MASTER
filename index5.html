@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 5: Tạo SSH KEY trên AWS EC2 Linux</h1>
+        </div>
+        <div>
+            <ul>
+                <li>sudo su -</li>
+                <li>useradd yuki</li>
+                <li>passwd yuki</li>
+                <li></li>
+                <li>Tạo publickey và privatekey</li>
+                <li>su - yuki</li>
+                <li>pwd</li>
+                <li>ssh-keygen -t rsa</li>
+                <li>mv id_rsa.pub authorized_keys</li>
+                <li>chmod 600 authorized_keys</li>
+                <li>visudo</li>
+                <li>yuki    ALL=(ALL)       NOPASSWD:ALL</li>
+                <li>yuki    ALL=(ALL)       ALL</li>
+            </ul>
+            <p>
+                <ul>
+                    <li>hostnamectl</li>
+                    <li>whoami</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
