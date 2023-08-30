@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin Học Thật Là Đơn Giản - AWS Cloud</title>
+    <link rel="stylesheet" href="https://quangtrung96.github.io/AWS/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="text-center text-danger">
+            <h1>AWS Cloud Tiếng Việt</h1>
+            <h1>Bài 7: Cài SSL miễn phí cho web server Apache trên AWS EC2 Linux</h1>
+        </div>
+        <div>
+            <pre>
+                sudo su -
+                yum install httpd -y
+                systemctl restart httpd
+                lsof -i -P -n | grep 80
+                yum install telnet 80
+                nslookup emlaai.click
+                mkdir -p /var/www/html/emlaai
+                chown -Rf apache:apache /var/www/html/emlaai
+                echo "Em La Ai" > /var/www/html/emlaai/index.html
+                cat /etc/ssh/sshd_config
+                vi /etc/httpd/etc/httpd.conf
+                <VirtualHost *:80>
+                    ServerAdmin webmaster@emlaai.click
+                    DocumentRoot "/var/www/html/emlaai"
+                    ServerName emlaai.click
+                    ErrorLog "logs/emlaai.click-error.log"
+                    CustomLog "logs/emlaai.click-access.log" common
+                </VirtualHost>
+                ==============================================
+                check version httpd apache using command line
+                httpd -v
+                httpd -V
+                httpd --version
+                type -a httpd
+                whereis httpd
+                command -v httpd
+                history
+                history | less
+                history | grep lsof
+                virtual host
+                ==============================================
+                yum install mod_ssl -y
+                yum install openssl -y
+                mkdir /etc/httpd/conf/emlaai-ssl
+                cd /etc/httpd/conf/emlaai-ssl
+                openssl genrsa > server.key
+                openssl req -new -key server.key > server.csr
+                .well-known/pki-validation/85D97B424DE6D73A3D9612DA6E4928C9.txt
+                /tmp/emlaai.click
+                cp -Rf /tmp/emlaai.click/* /etc/httpd/conf/emlaai-ssl/
+                chown root:root /etc/httpd/conf/emlaai-ssl/ca_bundle.crt
+                chown root:root /etc/httpd/conf/emlaai-ssl/certificate.crt
+                chmod 600 /etc/httpd/conf/emlaai-ssl/ca_bundle.crt
+                chmod 600 /etc/httpd/conf/emlaai-ssl/certificate.crt
+                <VirtualHost _default_:443>
+                    ServerAdmin   admin@emlaai.click
+                    DocumentRoot  /var/www/html/emlaai
+                    ServerName    emlaai.click
+                    ErrorLog      /var/www/html/emlaai/logs/error_log
+                    SSLEngine                on
+                    SSLCertificateFile       /etc/httpd/conf/emlaai-ssl/certificate.crt
+                    SSLCertificateKeyFile    /etc/httpd/conf/emlaai-ssl/server.key
+                    SSLCertificateChainFile  /etc/httpd/conf/emlaai-ssl/ca_bundle.crt
+                </VirtualHost>
+                systemctl restart httpd
+                lsof -i -P -n | grep 443
+                telnet emlaiai.click 443
+
+                <VirtualHost 172.31.25.195:80>
+                    ServerAdmin webmaster@donanhbinhminh.click
+                    DocumentRoot "/var/www/html/donanhbinhminh"
+                    ServerName donanhbinhminh.click
+                    Redirect "/" "https://donanhbinhminh.click:883"
+                    Redirect / https://donanhbinhminh.click:883
+                    Redirect 301 /oldfile.htm /newfile.htm
+                    ErrorLog "logs/donanhbinhminh.click-error.log"
+                    CustomLog "logs/donanhbinhminh.click-access.log" common
+                </VirtualHost>
+
+                ???
+                how to chek port is running on linux
+                how to chek port is running using command line
+                how to check version httpd apache on linux
+                how to check version httpd apache using comand line
+                redirect
+                virtualhost
+                how to redirect http to https on httpd apache
+                redirect http to https on httpd apache
+                Redirect 301 /oldfile.htm /newfile.htm
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
